@@ -1,0 +1,15 @@
+{% extends "padre.html" %}
+
+{% block content %}
+
+<h2>Lista de Celulares</h2>
+
+<ul>
+    {% for celulares in celulares %}
+        <li>
+         {{ celulares.modelo }}</li>
+    {% empty %}
+        <li>No hay celulares disponibles.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

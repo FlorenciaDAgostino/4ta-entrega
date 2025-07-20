@@ -1,0 +1,15 @@
+{% extends "padre.html" %}
+
+{% block content %}
+
+<h2>Lista de Lavarropas</h2>
+
+<ul>
+    {% for lavarropas in lavarropas %}
+        <li>
+         {{ lavarropas.modelo }}</li>
+    {% empty %}
+        <li>No hay lavarropas disponibles.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

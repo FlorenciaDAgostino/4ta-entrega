@@ -1,6 +1,10 @@
 from django.shortcuts import render, redirect
-from .models import Familiar, Curso, Estudiante, Profesores
-from.forms import CursoForm, EstudianteForm, ProfesoresForm
+from django.urls import reverse_lazy
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
+
+
+from .models import Familiar, Curso, Estudiante, Profesores, Celulares, Heladeras, Lavarropas
+from.forms import CursoForm, EstudianteForm, ProfesoresForm, CelularesForm, HeladerasForm, LavarropasForm
 
 # Create your views here.
 from django.http import HttpResponse
@@ -97,3 +101,91 @@ def buscar_cursos(request):
         nombre = request.GET.get('nombre', '')
         cursos = Curso.objects.filter(nombre__icontains=nombre)
         return render(request, 'mi_primer_app/cursos.html', {'cursos': cursos, 'nombre': nombre})
+    
+class CelularesListView(ListView):
+    model = Celulares
+    template_name = 'mi_primer_app/listar_celulares.html'
+    context_object_name = 'celulares'
+
+
+class CelularesCreateView(CreateView):
+    model = Celulares
+    form_class = CelularesForm
+    template_name = 'mi_primer_app/crear_celulares.html'
+    success_url = reverse_lazy('listar-celulares')
+
+class CelularesDetailView(DetailView):
+    model = Celulares
+    template_name = 'mi_primer_app/detalle_celulares.html'
+    context_object_name = 'celulares'
+
+
+class CelularesUpdateView(UpdateView):
+    model = Celulares
+    form_class = CelularesForm
+    template_name = 'mi_primer_app/crear_celulares.html'
+    success_url = reverse_lazy('listar-celulares') 
+
+
+class CelularesDeleteView(DeleteView):
+    model = Celulares
+    template_name = 'mi_primer_app/eliminar_celulares.html'
+    success_url = reverse_lazy('listar-celulares')    
+
+class HeladerasListView(ListView):
+    model = Heladeras
+    template_name = 'mi_primer_app/listar_heladeras.html'
+    context_object_name = 'heladeras'
+
+class HeladerasCreateView(CreateView):
+    model = Heladeras
+    form_class = HeladerasForm
+    template_name = 'mi_primer_app/crear_heladeras.html'
+    success_url = reverse_lazy('listar-heladeras')
+
+class HeladerasDetailView(DetailView):
+    model = Heladeras
+    template_name = 'mi_primer_app/detalle_heladeras.html'
+    context_object_name = 'heladeras'
+
+
+class HeladerasUpdateView(UpdateView):
+    model = Heladeras
+    form_class = HeladerasForm
+    template_name = 'mi_primer_app/crear_heladeras.html'
+    success_url = reverse_lazy('listar-heladeras') 
+
+
+class HeladerasDeleteView(DeleteView):
+    model = Heladeras
+    template_name = 'mi_primer_app/eliminar_heladeras.html'
+    success_url = reverse_lazy('listar-heladeras')   
+
+class LavarropasListView(ListView):
+    model = Lavarropas
+    template_name = 'mi_primer_app/listar_lavarropas.html'
+    context_object_name = 'lavarropas'    
+
+class LavarropasCreateViews(CreateView):
+    model = Lavarropas
+    form_class = LavarropasForm
+    template_name = 'mi_primer_app/crear_lavarropas.html'
+    success_url = reverse_lazy('listar-lavarropas')   
+
+class LavarropasDetailView(DetailView):
+    model = Lavarropas
+    template_name = 'mi_primer_app/detalle_lavarropas.html'
+    context_object_name = 'lavarropas'
+
+
+class LavarropasUpdateView(UpdateView):
+    model = Lavarropas
+    form_class = LavarropasForm
+    template_name = 'mi_primer_app/crear_lavarropas.html'
+    success_url = reverse_lazy('listar-lavarropas') 
+
+
+class LavarropasDeleteView(DeleteView):
+    model = Lavarropas
+    template_name = 'mi_primer_app/eliminar_lavarropas.html'
+    success_url = reverse_lazy('listar-lavarropas')

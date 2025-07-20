@@ -1,5 +1,5 @@
 from django import forms
-
+from .models import Celulares, Heladeras, Lavarropas
 
 class CursoForm(forms.Form):
     nombre = forms.CharField()
@@ -23,3 +23,18 @@ class ProfesoresForm(forms.Form):
     apellido = forms.CharField(label="Apellido", max_length=100)
     email = forms.EmailField()
     curso = forms.CharField(label="Curso", max_length=100)  
+
+class CelularesForm(forms.ModelForm):
+    class Meta:
+        model = Celulares
+        fields = ['modelo', 'marca', 'descripcion']    
+
+class HeladerasForm(forms.ModelForm):
+    class Meta:
+        model = Heladeras
+        fields = ['modelo', 'marca', 'descripcion']   
+
+class LavarropasForm(forms.ModelForm):
+    class Meta:
+        model = Lavarropas
+        fields = ['modelo', 'marca', 'descripcion']   
