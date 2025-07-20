@@ -1,7 +1,7 @@
 from django.urls import path
 
 from .views import (saludo, saludo_con_template, crear_familiar,
-                    inicio, crear_curso, crear_estudiante, buscar_cursos, cursos, crear_profesores,
+                    inicio, crear_curso, crear_estudiante, buscar_cursos, cursos, crear_profesores, crear_televisores,
                     CelularesCreateView, CelularesListView, HeladerasCreateView, HeladerasListView, LavarropasCreateViews,LavarropasListView)
 
 urlpatterns = [
@@ -12,6 +12,7 @@ urlpatterns = [
     path('crear-curso/', crear_curso, name= 'crear-curso'),
     path('crear-estudiante/', crear_estudiante, name= 'crear-estudiante'),
     path('crear-profesores/', crear_profesores, name= 'crear-profesores'),
+    path('crear-televisores/', crear_televisores, name= 'crear-televisores'),
     path('cursos/', cursos, name='cursos'),
     path('cursos/buscar', buscar_cursos, name='buscar-cursos'),
 

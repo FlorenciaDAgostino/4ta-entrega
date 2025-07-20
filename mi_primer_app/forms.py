@@ -24,6 +24,13 @@ class ProfesoresForm(forms.Form):
     email = forms.EmailField()
     curso = forms.CharField(label="Curso", max_length=100)  
 
+class TelevisoresForm(forms.Form):
+    modelo = forms.CharField(label="Modelo", max_length=20)
+    marca = forms.CharField(label="Marca", max_length=20)
+    fecha_publicación = forms.DateField(
+        widget=forms.DateInput(attrs={'type': 'date'}))   
+    
+
 class CelularesForm(forms.ModelForm):
     class Meta:
         model = Celulares

@@ -3,8 +3,8 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 
 
-from .models import Familiar, Curso, Estudiante, Profesores, Celulares, Heladeras, Lavarropas
-from.forms import CursoForm, EstudianteForm, ProfesoresForm, CelularesForm, HeladerasForm, LavarropasForm
+from .models import Familiar, Curso, Estudiante, Profesores, Televisores, Celulares, Heladeras, Lavarropas
+from.forms import CursoForm, EstudianteForm, ProfesoresForm, TelevisoresForm, CelularesForm, HeladerasForm, LavarropasForm
 
 # Create your views here.
 from django.http import HttpResponse
@@ -91,6 +91,22 @@ def crear_profesores(request):
         form = ProfesoresForm()
         return render(request, 'mi_primer_app/crear_profesores.html', {'form': form})
     
+def crear_televisores(request):
+
+    if request.method == 'POST':
+        form =TelevisoresForm(request.POST)
+        if form.is_valid():
+            # Procesar el formulario y guardar 
+            nuevo_curso = Televisores(
+                modelo=form.cleaned_data['modelo'],
+                marca=form.cleaned_data['marca'],
+                fecha_publicación=form.cleaned_data['fecha_publicación']
+            )
+            nuevo_curso.save()
+            return redirect('inicio')
+    else:
+        form = TelevisoresForm()
+        return render(request, 'mi_primer_app/crear_televisores.html', {'form': form})
 
 def cursos(request):
     cursos = Curso.objects.all()

@@ -44,6 +44,14 @@ class Profesores(models.Model):
 
     def __str__(self):
         return f"{self.nombre} {self.apellido}"    
+
+class Televisores(models.Model):
+    modelo = models.CharField(max_length=20)
+    marca = models.CharField(max_length=20)
+    fecha_publicación = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.marca} {self.modelo}"
     
 class Celulares (models.Model):
     modelo = models.CharField(max_length=20)
